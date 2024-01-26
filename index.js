@@ -11,7 +11,7 @@ const multer = require("multer")
 const path = require("path")
 
 //Middleware
-app.use(cors({origin:process.env.url, credentials:true}))
+app.use(cors({origin:'http://localhost:3000', credentials:true}))
 app.use(express.json())
 app.use(cookieParser())
 app.use("/images",express.static(path.join(__dirname,"/images")))
@@ -19,8 +19,6 @@ app.use('/api/auth/',auth)
 app.use("/api/user",userFunc)
 app.use("/api/post",posts)
 app.use("/api/comments",comments)
-
-const port= process.env.PORT
 
 //image upload
 const storage=multer.diskStorage({
@@ -39,7 +37,7 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
 })
 
 
-app.listen(port,()=>{
+app.listen(8000,()=>{
     console.log("Server started")
     MongoConnect()
 })
