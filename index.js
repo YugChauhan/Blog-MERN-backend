@@ -20,6 +20,8 @@ app.use("/api/user",userFunc)
 app.use("/api/post",posts)
 app.use("/api/comments",comments)
 
+const port= process.env.PORT
+
 //image upload
 const storage=multer.diskStorage({
     destination:(req,file,fn)=>{
@@ -37,7 +39,7 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
 })
 
 
-app.listen(8000,()=>{
+app.listen(port,()=>{
     console.log("Server started")
     MongoConnect()
 })
