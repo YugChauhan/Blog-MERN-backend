@@ -36,8 +36,9 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
     res.status(200).json("Image has been uploaded successfully!")
 })
 
+const port=process.env.PORT
 
-app.listen(8000,()=>{
-    console.log("Server started")
+app.listen(port,()=>{
+    console.log("Server started "+port)
     MongoConnect()
 })
