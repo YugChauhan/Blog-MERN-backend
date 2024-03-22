@@ -55,20 +55,13 @@ router.get("/logout", (req, res) => {
 
 //Refetch
 
-router.get("/refetch", (req, res) => {
+router.get("/refetch",(req, res) => {
   const Token = req.cookies.token;
-  jwt.verify(Token, process.env.SECRET, {}, async (err, data) => {
+   jwt.verify(Token,process.env.SECRET,{},async (err, data) => {
     if (err) {
       return res.status(404).json(err);
     }
-
-    // Set the cookie with appropriate attributes
-    res.cookie('token', Token, { 
-      sameSite: 'none', 
-      secure: true // Ensures cookie is sent over HTTPS only
-    });
-
-    res.status(200).json(data);
+     res.status(200).json(data);
   });
 });
 
