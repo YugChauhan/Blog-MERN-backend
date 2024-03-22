@@ -11,7 +11,7 @@ const multer = require("multer")
 const path = require("path")
 
 //Middleware
-app.use(cors({origin:"https://thebloger.netlify.app",credentials:true}))
+app.use(cors({origin:"http://localhost:3001",credentials:true}))
 app.use(express.json())
 app.use(cookieParser())
 app.use("/images",express.static(path.join(__dirname,"/images")))
