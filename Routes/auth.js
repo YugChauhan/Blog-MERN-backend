@@ -56,8 +56,6 @@ router.get("/logout", (req, res) => {
 //Refetch
 
 router.get("/refetch", (req, res) => {
-  const cookie = "user=hussein; samesite=none; secure";
-  res.setHeader("set-cookie", [cookie])
   const Token = req.cookies.token;
   jwt.verify(Token,process.env.SECRET,{}, async (err, data) => {
     if (err) {
